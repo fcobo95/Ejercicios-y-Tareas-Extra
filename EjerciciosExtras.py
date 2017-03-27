@@ -37,11 +37,34 @@ def determine_even_or_odd():
     return Response(json.dumps(isEven), mimetype='application/json')
 
 
-@app.route('/api/is_it_prime', methods=['GET'])
-def is_it_prime():
-    param = params()
+# @app.route('/api/is_it_prime', methods=['GET'])
+# def is_it_prime():
+#     param = params()
+#
+#     number = param['number']
 
-    number = param['number']
+# Tarea Vectores Erick Fernando Cobo Enriquez 3/27/2017
+import random
+
+vector = []
+
+# Falta agregar la ruta.
+# Este metodo se va a encargar de calcular cada una de las raices cuadradas para cada numero dentro del vector.
+def square_roots():
+    number = 0
+    sqrt = 0
+    # Con esto lleno el vector
+    for i in range(1000):
+        vector.append(float(i))
+    # Aqui calculo para cada numero del vector cual es su raiz cuadrada
+    for number in vector:
+        sqrt = number ** (1 / 2)
+        print("The number is: " + str(number) + " and its square root is: " + str(sqrt))
+    return sqrt
+
+#def
+square_roots()
+
 
 
 if __name__ == '__main__':
