@@ -23,9 +23,8 @@ class TaresServiciosWeb:
                 "Number": each_number,
                 "Square Root": square_root
             }))
+            print('\n')
         return the_result_array
-
-    float_square_roots()
 
     def integer_square_roots(self):
         the_result_array = []
