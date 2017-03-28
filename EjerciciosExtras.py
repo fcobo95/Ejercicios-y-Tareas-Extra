@@ -46,26 +46,29 @@ def determine_even_or_odd():
 # Tarea Vectores Erick Fernando Cobo Enriquez 3/27/2017
 import random
 
-vector = []
 
-# Falta agregar la ruta.
-# Este metodo se va a encargar de calcular cada una de las raices cuadradas para cada numero dentro del vector.
+# This method will handle request to calculate the square root of 1000 numbers that go into an array.
+@app.route('/api/square-root/', methods=['GET'])
 def square_roots():
-    number = 0
-    sqrt = 0
-    # Con esto lleno el vector
-    for i in range(1000):
-        vector.append(float(i))
-    # Aqui calculo para cada numero del vector cual es su raiz cuadrada
-    for number in vector:
-        sqrt = number ** (1 / 2)
-        print("The number is: " + str(number) + " and its square root is: " + str(sqrt))
-    return sqrt
 
-#def
-square_roots()
-
+    the_result_array = []
+    the_array = []
+    # I fill the_array with float values
+    for el_valor in range(1000):
+        the_array.append(float(el_valor))
+    """
+    I iterate through all the values of "the_array" and calculate their respective square root value
+    it then appends it to "the_result_array" and transforms it into a JSON.
+    """
+    for each_number in the_array:
+        square_root = each_number ** (1 / 2)
+        the_result_array.append({
+            "Number": each_number,
+            "Square Root": square_root
+        })
+    the_JSON_result = json.dumps(the_result_array)
+    return Response(the_JSON_result, status=200, mimetype='application/json')
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000, host='0.0.0.0')
+    app.run(debug=True, port=5000, host='localhost')
