@@ -23,6 +23,7 @@ class TaresServiciosWeb:
                 "Number": each_number,
                 "Square Root": square_root
             }))
+
             print('\n')
         return the_result_array
 
