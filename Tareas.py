@@ -28,9 +28,9 @@ class FloatArray:
     def subtract(self, number1, number2):
         return number1 - number2
 
-    def subtract_n_from_array(self, n):
+    def subtract_n_from_array(self, take_away):
         for each_number in self.the_array:
-            new_number = self.subtract(each_number, n)
+            new_number = self.subtract(each_number, take_away)
             self.format(each_number, new_number)
         return 'Succesful operation'
 
