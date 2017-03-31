@@ -92,19 +92,32 @@ class IntegerArray:
 
         return
 
-    def even_number(self):
+    def isPrime(self, each_number):
+        if each_number % 2 != 0:
+            if each_number % 3 != 0:
+                if each_number % 5 != 0:
+                    if each_number % 7 != 0:
+                        return each_number
+
+    def check_for_even_numbers(self):
         for each_number in self.the_array:
             if self.isEven(each_number):
                 print('It\'s an even number: ' + str(each_number))
             else:
                 print('It\'s an odd number: ' + str(each_number))
-        return each_number
+
+    def check_for_prime_numbers(self):
+        for each_number in self.the_array:
+            if self.isPrime(each_number):
+                print('It\'s a prime number: ' + str(each_number))
+            else:
+                print('It\'s not a prime number: ' + str(each_number))
 
     def vector(self):
         import random
         for each_number in range(20):
             try:
-                self.the_array.append(random.randint(1, 100))
+                self.the_array.append(random.randint(1, 20))
             except Exception as ex:
                 return 'Something went wrong: ' + str(ex)
 
@@ -113,10 +126,13 @@ class IntegerArray:
 intClass = IntegerArray()
 print('---------------BEGIN OF INTEGERARRAY CLASS---------------' + '\n')
 IntegerArray.vector(intClass)
-IntegerArray.even_number(intClass)
+# IntegerArray.check_for_even_numbers(intClass)
+IntegerArray.check_for_prime_numbers(intClass)
 print('Size of the array: ')
 IntegerArray.length(intClass)
 print('---------------END OF INTEGERARRAY CLASS---------------' + '\n')
+
+
 # -------------------- CLASS IntegerArray ENDS ----------------------------------------------------------------------- #
 
 class deleteArrayValue:
