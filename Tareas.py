@@ -23,6 +23,7 @@ Salida: [b,n,m,x,]
 """
 
 
+# EJERCICIO #1
 # -------------------- CLASS FloatArray BEGINS ----------------------------------------------------------------------- #
 class FloatArray:
     # self means that the constructor is taking in the instance of that object.
@@ -32,7 +33,7 @@ class FloatArray:
         self.the_result_array = []
 
     def fill_array(self):
-        for each_number in range(20):
+        for each_number in range(50):
             self.the_array.append(each_number)
 
     def format(self, x, y):
@@ -60,7 +61,6 @@ class FloatArray:
         return 'Succesful operation'
 
 
-# -------------------- CLASS FloatArray ENDS ------------------------------------------------------------------------- #
 # Instance of FloatArray class
 floatClass = FloatArray()
 print('---------------BEGIN OF FLOATARRAY CLASS---------------' + '\n')
@@ -70,6 +70,10 @@ FloatArray.subtract_n_from_array(floatClass, 10)
 print('---------------END OF FLOATARRAY CLASS---------------' + '\n')
 
 
+# -------------------- CLASS FloatArray ENDS ------------------------------------------------------------------------- #
+
+
+# EJERCICIO #2
 # -------------------- CLASS IntegerArray BEGINS --------------------------------------------------------------------- #
 class IntegerArray:
     def __init__(self):
@@ -87,6 +91,7 @@ class IntegerArray:
             return each_number
 
         return
+
     def even_number(self):
         for each_number in self.the_array:
             if self.isEven(each_number):
@@ -104,7 +109,6 @@ class IntegerArray:
                 return 'Something went wrong: ' + str(ex)
 
 
-# -------------------- CLASS IntegerArray ENDS ----------------------------------------------------------------------- #
 # Instance of IntegerArray class
 intClass = IntegerArray()
 print('---------------BEGIN OF INTEGERARRAY CLASS---------------' + '\n')
@@ -113,3 +117,7 @@ IntegerArray.even_number(intClass)
 print('Size of the array: ')
 IntegerArray.length(intClass)
 print('---------------END OF INTEGERARRAY CLASS---------------' + '\n')
+# -------------------- CLASS IntegerArray ENDS ----------------------------------------------------------------------- #
+
+class deleteArrayValue:
+    pass
