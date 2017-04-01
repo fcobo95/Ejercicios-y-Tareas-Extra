@@ -135,5 +135,28 @@ print('---------------END OF INTEGERARRAY CLASS---------------' + '\n')
 
 # -------------------- CLASS IntegerArray ENDS ----------------------------------------------------------------------- #
 
-class deleteArrayValue:
-    pass
+class Nodo:
+    def __init__(self, dato = None, siguiente = None):
+        self.dato = dato
+        self.siguiente = siguiente
+
+    def __str__(self):
+        return 'Nodo ['+str(self.dato)+']'
+
+class Lista:
+
+    def __init__(self):
+        self.primero = None
+        self.ultimo = None
+
+    def insertar(self, x):
+        if self.primero == None:
+            self.primero = Nodo(x, None)
+            self.primero = self.ultimo
+        elif self.ultimo == self.primero:
+            self.ultimo = Nodo(x, None)
+            self.primero.siguiente = self.ultimo
+        else:
+            actual = Nodo(x, None)
+            self.ultimo.siguiente = actual
+            self.ultimo = actual
