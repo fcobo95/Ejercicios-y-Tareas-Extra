@@ -19,13 +19,17 @@
 # Implementando una estructura de datos de Listas Simples
 
 # ---------------------------------------------------- CLASS NODO ---------------------------------------------------- #
+
+
 class Nodo(object):
-    def __init__(self, dato = None, siguiente = None):      # CONSTRUCTOR DEL NODO recibe un dato y una referencia la siguiente.
+    def __init__(self, dato=None, siguiente=None):          # CONSTRUCTOR DEL NODO recibe un dato y una referencia la siguiente.
         self.dato = dato                                    # Esta parte del nodo guarda la informacion o valor que le inserto.
         self.siguiente = siguiente                          # Esta parte del nodo guarda la referencia hacia el siguiente nodo.
 # ---------------------------------------------------- CLASS NODO ---------------------------------------------------- #
 
 # ---------------------------------------------------- CLASS LISTA --------------------------------------------------- #
+
+
 class Lista(object):
     def __init__(self):                                     # CONSTRUCTOR DE LA LISTA recibe la referencia del primer nodo.
         self.cabeza= None                                   # conocido como primero o cabeza.
@@ -54,12 +58,12 @@ class Lista(object):
         return contador                                     # Retorno el largo de la lista de nodos.
 
     def indice(self):
-        indice = 0
-        nodo = self.cabeza
-        while nodo is not None:
-            indice += 1
-            return indice-1
-        return None
+        indice = 0                                          # Declaro una variable local para retornar el indice.
+        nodo = self.cabeza                                  # Me ubico sobre el primer nodo de la lista.
+        while nodo is not None:                             # Si el nodo existe y no es vacio haga:
+            indice += 1                                     # Actualizo el valor del indice por cada dato que haya en la lista.
+            return indice-1                                 # Retorno el indice y le resto uno, para que empiece desde cero y no desde 1, ya que la asignacion le suma uno al principio, entonces nunca es 0.
+        return None                                         # En caso de que la lista este vacia, no existe indice.
 
     def determine_par_impar(self):
         nodo = self.cabeza                                  # Me coloco sobre el primer nodo, que es la cabeza
