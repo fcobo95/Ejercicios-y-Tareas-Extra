@@ -20,59 +20,103 @@
 # Entrada: [a,b,n,m,x,]
 #
 # Salida: [b,n,m,x,]
-# """
 
 # Implementando una estructura de datos de Listas Simples
-class Nodo(object):
-    def __init__(self, dato = None, siguiente = None):  # CONSTRUCTOR DEL NODO recibe un dato y una referencia la siguiente.
-        self.dato = dato                                # Esta parte del nodo guarda la informacion o valor que le inserto.
-        self.siguiente = siguiente                      # Esta parte del nodo guarda la referencia hacia el siguiente nodo.
 
+# ---------------------------------------------------- CLASS NODO ---------------------------------------------------- #
+class Nodo(object):
+    def __init__(self, dato = None, siguiente = None):      # CONSTRUCTOR DEL NODO recibe un dato y una referencia la siguiente.
+        self.dato = dato                                    # Esta parte del nodo guarda la informacion o valor que le inserto.
+        self.siguiente = siguiente                          # Esta parte del nodo guarda la referencia hacia el siguiente nodo.
+# ---------------------------------------------------- CLASS NODO ---------------------------------------------------- #
+
+# ---------------------------------------------------- CLASS LISTA --------------------------------------------------- #
 class Lista(object):
-    def __init__(self):                                 # CONSTRUCTOR DE LA LISTA recibe la referencia del primer nodo.
-        self.cabeza= None                               # conocido como primero o cabeza.
+    def __init__(self):                                     # CONSTRUCTOR DE LA LISTA recibe la referencia del primer nodo.
+        self.cabeza= None                                   # conocido como primero o cabeza.
         self.ultimo = None
 
-    def insertar(self, numero):
-        if self.cabeza is None:                         # Revisa si cabeza tiene algun dato, sino lo tiene, crea un nuevo nodo
-            self.cabeza = Nodo(numero, None)            # Asigna el nuevo nodo a cabeza
-            self.ultimo = self.cabeza                   # Se actualiza la referencia de que cabeza es igual a ultimo porque es el unico dato en la lista.
+    def insertar_dato(self, numero):
+        if self.cabeza is None:                             # Revisa si cabeza tiene algun dato, sino lo tiene, crea un nuevo nodo
+            self.cabeza = Nodo(numero, None)                # Asigna el nuevo nodo a cabeza
+            self.ultimo = self.cabeza                       # Se actualiza la referencia de que cabeza es igual a ultimo porque es el unico dato en la lista.
 
-        elif self.ultimo == self.cabeza:                # En caso de que ya exista un unico valor en la lista.
-            self.ultimo = Nodo(numero, None)            # se crea un nuevo nodo.
-            self.cabeza.siguiente = self.ultimo         # se actualiza el puntero.
+        elif self.ultimo == self.cabeza:                    # En caso de que ya exista un unico valor en la lista.
+            self.ultimo = Nodo(numero, None)                # se crea un nuevo nodo.
+            self.cabeza.siguiente = self.ultimo             # se actualiza el puntero.
 
-        else:                                           # En caso de hayan mas de dos datos
-            actual = Nodo(numero, None)                 # Crea un nuevo nodo donde alberga el nuevo dato
-            self.ultimo.siguiente = actual              # Como es un nuevo dato, se corre el puntero y se dice que el nodo nuevo es el nuevo ultimo
-            self.ultimo = actual                        # Se actualiza el puntero.
+        else:                                               # En caso de hayan mas de dos datos
+            actual = Nodo(numero, None)                     # Crea un nuevo nodo donde alberga el nuevo dato
+            self.ultimo.siguiente = actual                  # Como es un nuevo dato, se corre el puntero y se dice que el nodo nuevo es el nuevo ultimo
+            self.ultimo = actual                            # Se actualiza el puntero.
 
-    def __str__(self):                                  # Equivalente a toString en C# o Java.
-        if self.cabeza is not None:                     # Me aseguro si hay algun nodo o no.
-            actual = self.cabeza                        # Asigno a Actual al primer nodo --> cabeza
-            lista = 'Lista:\n' + str(actual.dato) + '\n'# Creo la vista de la lista que voy a imprimir.
-            while actual.siguiente is not None:         # Mientras que el nodo actual.siguiente tenga una referencia que no sea None, sigue iterando sobre la lista.
-                actual = actual.siguiente               # Avanzo en los nodos con la referencia '.siguiente' mientras que siguiente no sea None.
-                lista += str(actual.dato) + '\n'        # Concateno los datos que va encontrando en los nodos a la lista.
-            return lista + 'Fin de la Lista'            # Retorno la lista e imprimo que es el final de los datos de los nodos en la lista.
-        return 'Lista []'                               # En caso de que la lista este vacia; que no cumpla el if, retorno una lista vacia.
+    def length_lista(self):
+        actual = self.cabeza                                # Me posicion en el primer nodo.
+        contador = 0                                        # Declaro un contador para determinar el largo.
+        while actual:                                       # Ciclo while para iterar sobre los nodos.
+            contador += 1                                   # Por cada ocurrencia que sea cierta, le sumo 1 al contador
+            actual = actual.siguiente                       # Actualizo el actual, si diera None, es falso, entonces sale del ciclo.
+        return contador                                     # Retorno el largo de la lista de nodos.
 
-if __name__ == "__main__":                              # Es mi metodo main, equivalente a la clase main(String [] args) en Java o C#.
-    Listas = Lista()
-    Listas.insertar(1)
-    Listas.insertar(2)
-    Listas.insertar(3)
-    Listas.insertar(4)
-    Listas.insertar(5)
-    Listas.insertar(6)
-    Listas.insertar(7)
-    Listas.insertar(8)
-    Listas.insertar(9)
-    Listas.insertar(10)
-    Listas.insertar(11)
-    Listas.insertar(12)
-    Listas.insertar(13)
-    Listas.insertar(14)
-    Listas.insertar(15)
+    def indice(self):
+        indice = 0
+        nodo = self.cabeza
+        while nodo is not None:
+            indice += 1
+            return indice-1
+        return None
 
+    def determine_par_impar(self):
+        nodo = self.cabeza                                  # Me coloco sobre el primer nodo, que es la cabeza
+        index = self.indice()
+        while nodo is not None:                             # Mientras no sea None, siga iterando sobre la lista.
+            if nodo.dato % 2 == 0:                          # Si el residuo de la division del numero por numeros pares es 0, entonces es par.
+                print('El numero {} es par: indice[{}]'     # Retorna este mensaje
+                      .format(str(nodo.dato), str(index)))  # Retorna este mensaje si es par
+            else:                                           # Sino
+                print('El numero {} es impar: indice[{}]'   # Retorna este mensaje
+                      .format(str(nodo.dato), str(index)))  # Retorna este mensaje
+            index += 1
+            nodo = nodo.siguiente                           # Actualizo mi posicion del puntero sobre la lista.
+                                                            # No necesito retornar nada, ya que solo quiero saber que dato es par y cual no
+                                                            # y ya imprime cuales si son y cuales no.
+
+    def reste_n(self, number):
+        nodo = self.cabeza
+        while nodo is not None:
+            result = nodo.dato - number
+            print('Original={} : Resta={}'.format(nodo.dato, result))
+            nodo = nodo.siguiente
+
+    def raiz_cuadrada(self):
+        nodo = self.cabeza
+        while nodo is not None:
+            square = nodo.dato ** (1/2)
+            print('La raiz cuadrada de {} es {}'
+                  .format(str(nodo.dato), str(square)))
+            nodo = nodo.siguiente
+
+    def __str__(self):                                      # Equivalente a toString en C# o Java.
+        if self.cabeza is not None:                         # Me aseguro si hay algun nodo o no.
+            actual = self.cabeza                            # Asigno a Actual al primer nodo --> cabeza
+            lista = 'Lista:\n' + str(actual.dato) + '\n'    # Creo la vista de la lista que voy a imprimir.
+            while actual.siguiente is not None:             # Mientras que el nodo actual.siguiente tenga una referencia que no sea None, sigue iterando sobre la lista.
+                actual = actual.siguiente                   # Avanzo en los nodos con la referencia '.siguiente' mientras que siguiente no sea None.
+                lista += str(actual.dato) + '\n'            # Concateno los datos que va encontrando en los nodos a la lista.
+            return lista + 'Fin de la Lista'                # Retorno la lista e imprimo que es el final de los datos de los nodos en la lista.
+        return 'Lista []'                                   # En caso de que la lista este vacia; que no cumpla el if, retorno una lista vacia.
+# ---------------------------------------------------- CLASS LISTA --------------------------------------------------- #
+#                                                                                                                      #
+# -------------------------------------------------------- MAIN ------------------------------------------------------ #
+if __name__ == "__main__":              # Es mi metodo main, equivalente a la clase main(String [] args) en Java o C#.
+    Listas = Lista()                    # Creo una instancia de la clase Lista
+    for number in range(1, 1000):
+        Listas.insertar_dato(number)
     print(Listas)
+    print()
+    print('Tamaño de la lista')
+    print(Listas.length_lista())
+    print('Fin tamaño de la lista')
+    Lista.determine_par_impar(Listas)
+    Lista.raiz_cuadrada(Listas)
+    Lista.reste_n(Listas, 10)
