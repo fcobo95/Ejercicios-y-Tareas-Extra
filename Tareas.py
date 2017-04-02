@@ -160,17 +160,17 @@ class Lista(object):
             self.ultimo.siguiente = actual              # Como es un nuevo dato, se corre el puntero y se dice que el nodo nuevo es el nuevo ultimo
             self.ultimo = actual                        # Se actualiza el puntero.
 
-    def __str__(self):
-        if self.cabeza is not None:
-            actual = self.cabeza
-            lista = 'Lista:\n' + str(actual.dato) + '\n'
-            while actual.siguiente is not None:
-                actual = actual.siguiente
-                lista += str(actual.dato) + '\n'
-            return lista + 'Fin de la Lista'
-        return 'Lista [vacia]'
+    def __str__(self):                                  # Equivalente a toString en C# o Java.
+        if self.cabeza is not None:                     # Me aseguro si hay algun nodo o no.
+            actual = self.cabeza                        # Asigno a Actual al primer nodo --> cabeza
+            lista = 'Lista:\n' + str(actual.dato) + '\n'# Creo la vista de la lista que voy a imprimir.
+            while actual.siguiente is not None:         # Mientras que el nodo actual.siguiente tenga una referencia que no sea None, sigue iterando sobre la lista.
+                actual = actual.siguiente               # Avanzo en los nodos con la referencia '.siguiente' mientras que siguiente no sea None.
+                lista += str(actual.dato) + '\n'        # Concateno los datos que va encontrando en los nodos a la lista.
+            return lista + 'Fin de la Lista'            # Retorno la lista e imprimo que es el final de los datos de los nodos en la lista.
+        return 'Lista []'                               # En caso de que la lista este vacia; que no cumpla el if, retorno una lista vacia.
 
-if __name__ == "__main__":
+if __name__ == "__main__":                              # Es mi metodo main, equivalente a la clase main(String [] args) en Java o C#.
     Listas = Lista()
     Listas.insertar(1)
     Listas.insertar(2)
