@@ -1,8 +1,3 @@
-# # Indicaciones
-# """
-# 1. Crear  y alimentar un vector, 1000 elementos tipo double.
-#         a. Crear un método que calcule las raíces cuadradas de cada entrada del arreglo
-#         b. Crear un método que reste n unidades a cada entrada del arreglo
 # 2. Crear y alimentar un vector de números enteros generados aleatoriamente.
 #         a. Obtener un rango de elementos de dicho vector, donde el rango está dado por el índice a y b tomando en cuenta que rango no debe superar las dimensiones del arreglo.
 #         b. Obtener los números primos que se encuentra en el arreglo
@@ -82,18 +77,19 @@ class Lista(object):
                                                             # y ya imprime cuales si son y cuales no.
 
     def reste_n(self, number):
-        nodo = self.cabeza
-        while nodo is not None:
-            result = nodo.dato - number
-            print('Original={} : Resta={}'.format(nodo.dato, result))
-            nodo = nodo.siguiente
+        nodo = self.cabeza                                  # Me ubico en el primer nodo de la lista.
+        while nodo is not None:                             # Mientras que el nodo no sea None, siga iterando.
+            resultado = nodo.dato - number                  # Variable local resultado para imprimir el resultado de la resta al dato de ese nodo.
+            print('{} - {} = {}'                  # Imprimo el numero original, y el resultado de la resta.
+                  .format(nodo.dato, number, resultado))
+            nodo = nodo.siguiente                           # Actualizo el puntero y sigo iterando, mientras no sea None
 
     def raiz_cuadrada(self):
-        nodo = self.cabeza
-        while nodo is not None:
-            square = nodo.dato ** (1/2)
-            print('La raiz cuadrada de {} es {}'
-                  .format(str(nodo.dato), str(square)))
+        nodo = self.cabeza                                  # Me ubico en el primer nodo de la lista.
+        while nodo is not None:                             # Mientras que la referencia del nodo no sea None, siga.
+            cuadrado = nodo.dato ** (1/2)                   # Variable local cuadrado para almacenar el resultado de la raiz cuadrada del dato de ese nodo.
+            print('La raiz cuadrada de {} es {}'            # Imprimo el numero y su raiz cuadrada.
+                  .format(str(nodo.dato), str(cuadrado)))
             nodo = nodo.siguiente
 
     def __str__(self):                                      # Equivalente a toString en C# o Java.
@@ -110,13 +106,16 @@ class Lista(object):
 # -------------------------------------------------------- MAIN ------------------------------------------------------ #
 if __name__ == "__main__":              # Es mi metodo main, equivalente a la clase main(String [] args) en Java o C#.
     Listas = Lista()                    # Creo una instancia de la clase Lista
-    for number in range(1, 1000):
-        Listas.insertar_dato(number)
-    print(Listas)
-    print()
+    # for numero in range(1, 1000):       # Le ingreso datos en un rango de 1 ==> 1000
+    #     Listas.insertar_dato(numero)    # Inserto los datos en la lista
+    import random
+    for numero in range(1000):
+        numeros = random.randint(1, 1000)
+        Listas.insertar_dato(numeros)
+    print(Listas)                       # Imprimo la lista.
     print('Tamaño de la lista')
-    print(Listas.length_lista())
+    print(Listas.length_lista())        # Imprimo el tamaño de la lista.
     print('Fin tamaño de la lista')
-    Lista.determine_par_impar(Listas)
-    Lista.raiz_cuadrada(Listas)
-    Lista.reste_n(Listas, 10)
+    Lista.determine_par_impar(Listas)   # Imprime que numeros son pares, y cuales no.
+    Lista.raiz_cuadrada(Listas)         # Imprime la raiz cuadra de cada numero en la lista.
+    Lista.reste_n(Listas, 50)           # Resta por la cantidad en el segundo argumento sobre los valores de los datos de la lista.
