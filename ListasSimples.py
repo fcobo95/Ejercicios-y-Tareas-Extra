@@ -1,3 +1,6 @@
+# 1. Crear  y alimentar un vector, 1000 elementos tipo double.
+#         a. Crear un método que calcule las raíces cuadradas de cada entrada del arreglo
+#         b. Crear un método que reste n unidades a cada entrada del arreglo
 # 2. Crear y alimentar un vector de números enteros generados aleatoriamente.
 #         a. Obtener un rango de elementos de dicho vector, donde el rango está dado por el índice a y b tomando en cuenta que rango no debe superar las dimensiones del arreglo.
 #         b. Obtener los números primos que se encuentra en el arreglo
