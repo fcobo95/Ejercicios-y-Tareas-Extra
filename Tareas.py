@@ -137,34 +137,55 @@
 
 # Implementando una estructura de datos de Listas Simples
 class Nodo(object):
-    def __init__(self, dato, siguiente_nodo):           # CONSTRUCTOR DEL NODO recibe un dato y una referencia la siguiente
-        self.dato = dato                                # Esta parte del nodo guarda la informacion o valor que le inserto
-        self.siguiente_nodo = siguiente_nodo            # Este es el puntero que tiene la referencia hacia el otro nodo.
-
-    def get_dato(self):                                 # GET del dato en el nodo
-        return self.dato                                # Retorna el dato que esta dentro del nodo.
-
-    def get_siguiente_nodo(self):                       # GET de la referencia del siguiente en el nodo.
-        return self.siguiente_nodo                      # Retorna la referencia hacia el siguiente nodo.
-
-    def set_siguiente_nodo(self, siguiente):            # SET para el la referencia del siguiente nodo
-        self.siguiente_nodo = siguiente                 # Settea la referencia del puntero hacia el nodo vecino.
-
-    def __str__(self):
-        return '[' + str(self.dato) + ']'               # Equivalente a un @override toString en Java. Esto permite que el
-                                                        # el usuario pueda imprimir algo que sea legible para una persona.
-                                                        # por ejemplo, se puede usar str() o repr(), como __str__ o __repr__
-                                                        # voy a implementar __str__ por que es el mejor para legibilidad
+    def __init__(self, dato = None, siguiente = None):  # CONSTRUCTOR DEL NODO recibe un dato y una referencia la siguiente.
+        self.dato = dato                                # Esta parte del nodo guarda la informacion o valor que le inserto.
+        self.siguiente = siguiente                      # Esta parte del nodo guarda la referencia hacia el siguiente nodo.
 
 class Lista(object):
-    def __init__(self, cabeza):                         # CONSTRUCTOR DE LA LISTA recibe la referencia del primer nodo
-        self.cabeza= cabeza                               # conocido como primero o cabeza.
+    def __init__(self):                                 # CONSTRUCTOR DE LA LISTA recibe la referencia del primer nodo.
+        self.cabeza= None                               # conocido como primero o cabeza.
+        self.ultimo = None
 
-    def insertar_nodo(self, dato):
-        if self.cabeza == None:
-            nuevo_nodo = Nodo(dato, None)
-            self.cabeza = nuevo_nodo
+    def insertar(self, numero):
+        if self.cabeza is None:                         # Revisa si cabeza tiene algun dato, sino lo tiene, crea un nuevo nodo
+            self.cabeza = Nodo(numero, None)            # Asigna el nuevo nodo a cabeza
+            self.ultimo = self.cabeza                   # Se actualiza la referencia de que cabeza es igual a ultimo porque es el unico dato en la lista.
 
+        elif self.ultimo == self.cabeza:                # En caso de que ya exista un unico valor en la lista.
+            self.ultimo = Nodo(numero, None)            # se crea un nuevo nodo.
+            self.cabeza.siguiente = self.ultimo         # se actualiza el puntero.
+
+        else:                                           # En caso de hayan mas de dos datos
+            actual = Nodo(numero, None)                 # Crea un nuevo nodo donde alberga el nuevo dato
+            self.ultimo.siguiente = actual              # Como es un nuevo dato, se corre el puntero y se dice que el nodo nuevo es el nuevo ultimo
+            self.ultimo = actual                        # Se actualiza el puntero.
+
+    def __str__(self):
+        if self.cabeza is not None:
+            actual = self.cabeza
+            lista = 'Lista:\n' + str(actual.dato) + '\n'
+            while actual.siguiente is not None:
+                actual = actual.siguiente
+                lista += str(actual.dato) + '\n'
+            return lista + 'Fin de la Lista'
+        return 'Lista [vacia]'
 
 if __name__ == "__main__":
-    pass
+    Listas = Lista()
+    Listas.insertar(1)
+    Listas.insertar(2)
+    Listas.insertar(3)
+    Listas.insertar(4)
+    Listas.insertar(5)
+    Listas.insertar(6)
+    Listas.insertar(7)
+    Listas.insertar(8)
+    Listas.insertar(9)
+    Listas.insertar(10)
+    Listas.insertar(11)
+    Listas.insertar(12)
+    Listas.insertar(13)
+    Listas.insertar(14)
+    Listas.insertar(15)
+
+    print(Listas)
