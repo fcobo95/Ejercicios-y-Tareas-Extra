@@ -65,6 +65,37 @@ class Lista(object):
             return indice-1                                 # Retorno el indice y le resto uno, para que empiece desde cero y no desde 1, ya que la asignacion le suma uno al principio, entonces nunca es 0.
         return None                                         # En caso de que la lista este vacia, no existe indice.
 
+    def borrar_dato(self, dato):
+        actual = self.cabeza                                # Me ubico sobre el primer nodo de la lista.
+        anterior = None                                     # Asigno una variable local en la cual voy a guardar un referencia del numero anterior
+        es_dato = False                                     # Un booleano que determina si es el dato que estoy tratando de borrar o no.
+        while actual and es_dato is False:                  # Mientras que el dato del actual no sea el dato que entra por parametro, y el estado de es_dato sean falso, siga buscando.
+            if actual.dato == dato:                         # Si encuentro el dato que quiero borrar, cambio el estado de es_dato a True e imprimo el dato que voy a eliminar.
+                es_dato = True                              # Le asigno True a es_dato ya que el dato que buscaba es el mismo.
+                print('El dato eliminado es {}'             # Imprimo el dato que elimine.
+                      .format(dato))
+            else:                                           # Sino
+                anterior = actual                           # El dato anterior es igual al actual, quiere decir que actualizo el puntero.
+                actual = actual.siguiente                   # Actual ahora es el siguiente dato de la lista. Se actualiza el puntero.
+        if actual is None:                                  # Si el actual es None, quiere decir el dato no existe en la lista., por lo tanto
+            print("No se encontro el dato {}"               # Imprimo que no existe.
+                             .format(dato))
+        if anterior is None:                                # Si el anterior es None
+            self.cabeza = actual.siguiente                  # Actualizo que ahora la cabeza es el dato que sigue.
+        else:                                               # Sino
+            anterior.siguiente = actual.siguiente           # El dato anterior ahora es el dato siguiente al actual.
+        return None
+
+    def invertir_lista(self):
+        anterior = None                                     # Anterior es None
+        actual = self.cabeza                                # Me posiciono sobre el primer elemento de la lista.
+        while actual is not None:                           # Mientras cabeza no sea None haga...
+            siguiente = actual.siguiente                    # Variable local para guardar el valor que le sigue a la cabeza, guardo la referencia.
+            actual.siguiente = anterior                     # El dato que le sigue al actual ahora es el dato anterior
+            anterior = actual                               # Anterior ahora es el actual
+            actual = siguiente                              # Actual es el dato siguiente
+        self.cabeza = anterior                              # Ahora la cabeza es el dato anteror.
+
     def determine_par_impar(self):
         nodo = self.cabeza                                  # Me coloco sobre el primer nodo, que es la cabeza
         index = self.indice()
@@ -108,18 +139,23 @@ class Lista(object):
 # ---------------------------------------------------- CLASS LISTA --------------------------------------------------- #
 #                                                                                                                      #
 # -------------------------------------------------------- MAIN ------------------------------------------------------ #
-if __name__ == "__main__":              # Es mi metodo main, equivalente a la clase main(String [] args) en Java o C#.
-    Listas = Lista()                    # Creo una instancia de la clase Lista
-    # for numero in range(1, 1000):       # Le ingreso datos en un rango de 1 ==> 1000
-    #     Listas.insertar_dato(numero)    # Inserto los datos en la lista
-    import random
-    for numero in range(1000):
-        numeros = random.randint(1, 1000)
-        Listas.insertar_dato(numeros)
-    print(Listas)                       # Imprimo la lista.
-    print('Tamaño de la lista')
-    print(Listas.length_lista())        # Imprimo el tamaño de la lista.
-    print('Fin tamaño de la lista')
-    Lista.determine_par_impar(Listas)   # Imprime que numeros son pares, y cuales no.
-    Lista.raiz_cuadrada(Listas)         # Imprime la raiz cuadra de cada numero en la lista.
-    Lista.reste_n(Listas, 50)           # Resta por la cantidad en el segundo argumento sobre los valores de los datos de la lista.
+if __name__ == "__main__":                                  # Es mi metodo main, equivalente a la clase main(String [] args) en Java o C#.
+    Listas = Lista()                                        # Creo una instancia de la clase Lista
+    for numero in range(1, 10):                             # Le ingreso datos en un rango de 1 ==> 1000
+        Listas.insertar_dato(numero)                        # Inserto los datos en la lista
+
+    # import random                                           # Importo la libreria random
+    # for numero in range(1000):                              # Declaro un rango en el ciclo
+    #     numeros = random.randint(1, 1000)                   # Declaro numeros, los cuales son aleatorios entre 1 y 1000.
+    #     Listas.insertar_dato(numeros)                       # Los ingreso en la lista.
+    print(Listas)
+    # Lista.borrar_dato(Listas, 2)
+    # print(Listas)                                           # Imprimo la lista.
+    # print('Tamaño de la lista')
+    # print(Listas.length_lista())                            # Imprimo el tamaño de la lista.
+    # print('Fin tamaño de la lista')
+    # Lista.determine_par_impar(Listas)                       # Imprime que numeros son pares, y cuales no.
+    # Lista.raiz_cuadrada(Listas)                             # Imprime la raiz cuadra de cada numero en la lista.
+    # Lista.reste_n(Listas, 50)                               # Resta por la cantidad en el segundo argumento sobre los valores de los datos de la lista.
+    Lista.invertir_lista(Listas)
+    print(Listas)
