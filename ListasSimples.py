@@ -147,18 +147,18 @@ if __name__ == "__main__":                                  # Es mi metodo main,
     for numero in range(1, 10):                             # Le ingreso datos en un rango de 1 ==> 1000
         Listas.insertar_dato(numero)                        # Inserto los datos en la lista
 
-    # import random                                           # Importo la libreria random
-    # for numero in range(1000):                              # Declaro un rango en el ciclo
-    #     numeros = random.randint(1, 1000)                   # Declaro numeros, los cuales son aleatorios entre 1 y 1000.
-    #     Listas.insertar_dato(numeros)                       # Los ingreso en la lista.
+    # import random                                         # Importo la libreria random
+    # for numero in range(1000):                            # Declaro un rango en el ciclo
+    #     numeros = random.randint(1, 1000)                 # Declaro numeros, los cuales son aleatorios entre 1 y 1000.
+    #     Listas.insertar_dato(numeros)                     # Los ingreso en la lista.
     print(Listas)
     # Lista.borrar_dato(Listas, 2)
-    # print(Listas)                                           # Imprimo la lista.
+    # print(Listas)                                         # Imprimo la lista.
     # print('Tamaño de la lista')
-    # print(Listas.length_lista())                            # Imprimo el tamaño de la lista.
+    # print(Listas.length_lista())                          # Imprimo el tamaño de la lista.
     # print('Fin tamaño de la lista')
-    # Lista.determine_par_impar(Listas)                       # Imprime que numeros son pares, y cuales no.
-    # Lista.raiz_cuadrada(Listas)                             # Imprime la raiz cuadra de cada numero en la lista.
-    # Lista.reste_n(Listas, 50)                               # Resta por la cantidad en el segundo argumento sobre los valores de los datos de la lista.
+    # Lista.determine_par_impar(Listas)                     # Imprime que numeros son pares, y cuales no.
+    # Lista.raiz_cuadrada(Listas)                           # Imprime la raiz cuadra de cada numero en la lista.
+    # Lista.reste_n(Listas, 50)                             # Resta por la cantidad en el segundo argumento sobre los valores de los datos de la lista.
     Lista.invertir_lista(Listas)
     print(Listas)
